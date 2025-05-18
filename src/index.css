@@ -62,24 +62,56 @@
   }
   
   .bg-hero {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=1920');
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&q=80&w=1920');
     background-size: cover;
     background-position: center;
   }
   
   .bg-projects {
-    background-image: linear-gradient(to bottom, rgba(240, 249, 255, 0.9), rgba(240, 249, 255, 0.8)), url('https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80&w=1920');
+    background-image: linear-gradient(to bottom, rgba(240, 249, 255, 0.9), rgba(240, 249, 255, 0.85)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1920');
     background-size: cover;
     background-position: center;
   }
   
   .bg-contact {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&q=80&w=1920');
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .bg-blog {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80&w=1920');
     background-size: cover;
     background-position: center;
   }
   
   .section-transition {
     @apply transition-all duration-500 ease-in-out;
+  }
+  
+  /* Page transition effects */
+  .page-enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  .page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms, transform 500ms;
+  }
+  
+  /* Section reveal on scroll */
+  .reveal-section {
+    @apply opacity-0 translate-y-10 transition-all duration-700 ease-out;
+  }
+  
+  .reveal-section.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  /* Smooth background transitions */
+  .bg-transition {
+    @apply transition-all duration-700 ease-in-out;
   }
 }

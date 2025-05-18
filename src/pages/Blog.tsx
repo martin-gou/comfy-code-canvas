@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../components/Layout';
 import BlogCard from '../components/BlogCard';
 
@@ -51,30 +51,32 @@ const blogPosts = [
 const Blog = () => {
   return (
     <Layout>
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 animate-fade-in">Blog</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Thoughts, ideas and guides on web development, design and more
-          </p>
+      <section className="bg-blog bg-transition py-12">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold mb-4 animate-fade-in">Blog</h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              Thoughts, ideas and guides on web development, design and more
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post, index) => (
+              <div 
+                key={post.id} 
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <BlogCard {...post} />
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <p className="text-gray-600">More posts coming soon...</p>
+          </div>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <div 
-              key={post.id} 
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <BlogCard {...post} />
-            </div>
-          ))}
-        </div>
-        
-        <div className="mt-12 text-center">
-          <p className="text-gray-600">More posts coming soon...</p>
-        </div>
-      </div>
+      </section>
     </Layout>
   );
 };

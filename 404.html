@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+    <script>
+      // Redirect to the index.html with the URL's path
+      const segment = window.location.pathname.split('/').pop();
+      const url = window.location.origin + '/#/' + segment;
+      window.location.replace(url);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to homepage...</p>
+  </body>
+</html>

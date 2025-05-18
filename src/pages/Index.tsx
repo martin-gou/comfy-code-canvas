@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../components/Layout';
 import ProfileSection from '../components/ProfileSection';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -45,11 +45,34 @@ const latestPosts = [
 ];
 
 const Index = () => {
+  useEffect(() => {
+    // Add transition effect when scrolling
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (sectionTop < windowHeight * 0.75) {
+          section.classList.add('opacity-100');
+          section.classList.remove('opacity-0', 'translate-y-10');
+        }
+      });
+    };
+
+    handleScroll(); // Initial check
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <Layout>
       <ProfileSection />
       
-      <section className="py-12 px-4 bg-secondary/50">
+      <section className="py-12 px-4 bg-projects section-transition">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">Featured Projects</h2>
@@ -68,7 +91,7 @@ const Index = () => {
         </div>
       </section>
       
-      <section className="py-12 px-4">
+      <section className="py-12 px-4 section-transition">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">Latest Posts</h2>
@@ -87,7 +110,7 @@ const Index = () => {
         </div>
       </section>
       
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-contact section-transition">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Let's Work Together</h2>
           <p className="text-gray-600 mb-8">

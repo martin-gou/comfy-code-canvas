@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 const ProfileSection = () => {
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 bg-hero section-transition">
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="animate-fade-in">
           <div className="relative w-64 h-64 mx-auto md:mx-0 overflow-hidden rounded-full shadow-xl border-4 border-white">

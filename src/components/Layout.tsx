@@ -32,19 +32,24 @@ const Layout = ({ children }: LayoutProps) => {
       }
     };
 
-    // Handle section reveal animations on scroll
+    // Enhanced section reveal animations with more subtle transitions
     const handleScroll = () => {
       const sections = document.querySelectorAll('section');
-      sections.forEach((section) => {
+      sections.forEach((section, index) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        // Add reveal class if not already present
         if (!section.classList.contains('reveal-section')) {
           section.classList.add('reveal-section');
         }
         
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
+        // Reveal section when 15% of it is in viewport
         if (sectionTop < windowHeight * 0.85) {
-          section.classList.add('revealed');
+          // Add a small delay based on section index for cascade effect
+          setTimeout(() => {
+            section.classList.add('revealed');
+          }, index * 120);
         }
       });
     };
@@ -52,8 +57,8 @@ const Layout = ({ children }: LayoutProps) => {
     document.addEventListener('click', handleAnchorClick);
     window.addEventListener('scroll', handleScroll);
     
-    // Initial check for sections in viewport on load
-    setTimeout(handleScroll, 100);
+    // Initial check for sections in viewport with slight delay for page load
+    setTimeout(handleScroll, 200);
     
     return () => {
       document.removeEventListener('click', handleAnchorClick);
